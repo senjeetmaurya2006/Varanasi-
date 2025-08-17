@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorer Varanasi</title>
+  <style>
+    /* 🔥 Reset */
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif;}
+
+    body {background: #f9f9f9; color: #333; line-height: 1.6; scroll-behavior: smooth; transition: background 0.5s, color 0.5s;}
+    body.dark {background: #121212; color: #f9f9f9;}
+
+    header {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1596996798853-d629d32d0a19') no-repeat center/cover;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; color: white; position: relative;
+    }
+    header::after {
+      content: ""; position: absolute; top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);
+    }
+    header .content {position: relative; z-index: 2;}
+    header h1 {font-size: 3rem; margin-bottom: 1rem;}
+    header p {font-size: 1.5rem; margin-bottom: 1rem;}
+    header button {
+      padding: 10px 20px; background: #ff9800; color: #fff; border: none; cursor: pointer;
+      font-size: 1.2rem; border-radius: 5px;
+    }
+
+    nav {
+      position: sticky; top: 0; background: #ff9800; color: white; display: flex;
+      justify-content: center; padding: 10px; z-index: 1000;
+    }
+    nav a {color: white; margin: 0 15px; text-decoration: none; font-weight: bold;}
+
+    section {padding: 60px 20px; max-width: 1100px; margin: auto;}
+
+    h2 {text-align: center; margin-bottom: 20px; font-size: 2rem; color: #ff9800;}
+
+    .about, .contact {text-align: center;}
+
+    /* Packages */
+    .packages {display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
+    .card {
+      background: white; padding:20px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .card:hover {transform: translateY(-5px);}
+    .card h3 {margin-bottom:10px; color:#ff9800;}
+    .card p {margin-bottom:10px;}
+    .card button {
+      padding:8px 15px; background:#ff9800; color:white; border:none; border-radius:5px; cursor:pointer;
+    }
+
+    /* Gallery */
+    .gallery {display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px;}
+    .gallery img {width:100%; border-radius:8px; transition: transform .3s;}
+    .gallery img:hover {transform:scale(1.05);}
+
+    /* Testimonials */
+    .testimonials {display:flex; overflow-x:auto; gap:20px; scroll-snap-type:x mandatory; padding:10px;}
+    .testimonial {
+      min-width:300px; background:white; padding:20px; border-radius:10px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1); scroll-snap-align:start;
+    }
+    .testimonial h4 {margin-top:10px; color:#ff9800;}
+
+    /* Counters */
+    .counters {display:flex; justify-content:space-around; flex-wrap:wrap; text-align:center;}
+    .counter {margin:20px;}
+    .counter span {font-size:2rem; color:#ff9800; display:block;}
+
+    /* Contact */
+    .contact a {display:block; margin:10px 0; color:#ff9800; font-weight:bold; text-decoration:none;}
+
+    /* Floating WhatsApp */
+    .whatsapp {
+      position:fixed; bottom:20px; right:20px; background:#25D366; color:white; padding:15px;
+      border-radius:50%; font-size:25px; text-align:center; text-decoration:none;
+      box-shadow:0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    /* Dark Mode Toggle */
+    #darkToggle {position:fixed; top:20px; right:20px; padding:8px 12px; background:#333; color:white; border:none; border-radius:5px; cursor:pointer;}
+  </style>
+</head>
+<body>
+  <button id="darkToggle">🌙</button>
+  <header>
+    <div class="content">
+      <h1>Explorer Varanasi</h1>
+      <p>The Spiritual Capital of India</p>
+      <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Explore Now</button>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#packages">Packages</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#festivals">Festivals</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about" class="about">
+    <h2>About Varanasi</h2>
+    <p>Varanasi, one of the world’s oldest living cities, is the spiritual heart of India. From the sacred Ganga Aarti at Dashashwamedh Ghat to the serenity of Sarnath, every corner tells a story. Explorer Varanasi is created by someone deeply connected with the city, sharing authentic experiences and knowledge to make your journey unforgettable.</p>
+  </section>
+
+  <section id="packages">
+    <h2>Tour Packages</h2>
+    <div class="packages">
+      <div class="card">
+        <h3>Ganga Aarti Experience</h3>
+        <p>Witness the divine Ganga Aarti at Dashashwamedh Ghat.</p>
+        <p>Price: ₹400</p>
+        <button onclick="book()">Book Now</button>
+      </div>
+      <div class="card">
+        <h3>Sarnath Tour</h3>
+        <p>Visit the sacred place where Lord Buddha gave his first sermon.</p>
+        <p>Price: ₹400</p>
+        <button onclick="book()">Book Now</button>
+      </div>
+      <div class="card">
+        <h3>Assi Ghat Walk</h3>
+        <p>Explore Assi Ghat and experience the morning Subah-e-Banaras.</p>
+        <p>Price: ₹400</p>
+        <button onclick="book()">Book Now</button>
+      </div>
+      <div class="card">
+        <h3>Combo Package</h3>
+        <p>Complete tour of Ganga Aarti, Sarnath, Assi Ghat & more.</p>
+        <p>Price: ₹2000</p>
+        <button onclick="book()">Book Now</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1603288964833-d8a3c6d53295" alt="Ganga Aarti">
+      <img src="https://images.unsplash.com/photo-1606292237939-01fb9b31c764" alt="Sarnath">
+      <img src="https://images.unsplash.com/photo-1589634853975-ec8e80e8b1a5" alt="Assi Ghat">
+      <img src="https://images.unsplash.com/photo-1618213833476-24228de4320d" alt="Kashi Vishwanath">
+      <img src="https://images.unsplash.com/photo-1621703720644-8a2a7f6d4c9d" alt="Varanasi Boats">
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <h2>What People Say</h2>
+    <div class="testimonials">
+      <div class="testimonial"><p>“A magical experience at Ganga Aarti. Truly unforgettable.”</p><h4>- Rahul, Delhi</h4></div>
+      <div class="testimonial"><p>“Sarnath tour was peaceful and enlightening. Must visit!”</p><h4>- Emma, UK</h4></div>
+      <div class="testimonial"><p>“Assi Ghat morning vibes are just beyond words.”</p><h4>- Priya, Mumbai</h4></div>
+      <div class="testimonial"><p>“Best guided tour of Varanasi, felt like home.”</p><h4>- Alex, USA</h4></div>
+      <div class="testimonial"><p>“Very affordable and authentic experience.”</p><h4>- Sunil, Lucknow</h4></div>
+    </div>
+  </section>
+
+  <section class="counters">
+    <div class="counter"><span id="tourists">0</span> Tourists Served</div>
+    <div class="counter"><span id="packagesCount">0</span> Packages</div>
+    <div class="counter"><span id="years">0</span> Years of Experience</div>
+  </section>
+
+  <section id="festivals">
+    <h2>Varanasi Festivals</h2>
+    <ul style="list-style:none;text-align:center;">
+      <li>🌸 Dev Deepawali – November</li>
+      <li>🕉️ Mahashivratri – February/March</li>
+      <li>🎶 Ganga Mahotsav – November</li>
+      <li>🎨 Holi in Banaras – March</li>
+      <li>🌞 Makar Sankranti – January</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>📍 Location: BHU, Varanasi</p>
+    <a href="mailto:senjeetmaurya1@gmail.com">📧 senjeetmaurya1@gmail.com</a>
+    <a href="https://wa.me/916306651126" target="_blank">📱 WhatsApp: +91 6306651126</a>
+    <p>Follow us on Instagram: <a href="https://instagram.com/Lordkira01" target="_blank">@Lordkira01</a></p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.892206291875!2d82.99125831499572!3d25.267720983865277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e2d0a8a71d3f1%3A0xe5e294d9d89c7479!2sBanaras%20Hindu%20University!5e0!3m2!1sen!2sin!4v1691589840195!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <a href="https://wa.me/916306651126" class="whatsapp">💬</a>
+
+  <script>
+    // WhatsApp Booking
+    function book() {
+      window.open("https://wa.me/916306651126?text=I%20want%20to%20book%20a%20Varanasi%20tour", "_blank");
+    }
+
+    // Dark Mode Toggle
+    const toggle = document.getElementById('darkToggle');
+    toggle.onclick = () => document.body.classList.toggle('dark');
+
+    // Counters Animation
+    function animateCounter(id, target) {
+      let count = 0;
+      const speed = 50;
+      const interval = setInterval(() => {
+        if (count < target) {count++; document.getElementById(id).innerText = count;}
+        else clearInterval(interval);
+      }, speed);
+    }
+    animateCounter('tourists', 5000);
+    animateCounter('packagesCount', 20);
+    animateCounter('years', 10);
+  </script>
+</body>
+  </html>
